@@ -1,0 +1,14 @@
+<footer class="footer">
+  <nav class="footer__nav">
+    <div class="footer__container footer__container--paragrahp">
+      <p>Thanks for reading!</p>
+      <p>Eco Market INC.</p>
+    </div>
+    <ul class="footer__ul">
+      @for (item of linkedLogo; track $index) {
+        <li class="footer_list"><a href="{{item.link}}" target="_blank"><img src="{{item.path}}" alt="{{item.alt}}"></a></li>
+      }
+    </ul>
+  </nav>
+  <p class="footer__pragrahp">Copyright © 2024 Eco Market All rights reserved.</p>
+</footer>
