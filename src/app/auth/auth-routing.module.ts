@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthLayoutComponent } from '../ui/layouts/auth-layout/auth-layout.component';
-import { LoginFormComponent } from '../ui/forms/login-form/login-form.component';
 import { RegisterFormComponent } from '../ui/forms/register-form/register-form.component';
+import { LoginContainerComponent } from '../container/login-container/login-container.component';
+import { publicMarketGuard } from './public-market.guard';
 
 const routes: Routes = [
   {
@@ -11,10 +12,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: LoginFormComponent,
+        component: LoginContainerComponent,
         outlet: 'auth-form'
       }
-    ]
+    ], canActivate: [publicMarketGuard]
   },
   {
     path: 'register',
@@ -25,7 +26,7 @@ const routes: Routes = [
         component: RegisterFormComponent,
         outlet: 'auth-form'
       }
-    ]
+    ], canActivate: [publicMarketGuard]
   }
 ];
 

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { InputComponent } from '../../elements/input/input.component';
+import { ILogin } from '../../../core/models/interfaces/login.interface';
 
 @Component({
   selector: 'app-login-form',
@@ -11,9 +12,10 @@ import { InputComponent } from '../../elements/input/input.component';
   styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
+  @Output() loginValue = new EventEmitter<ILogin>();
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl('')
   });
   submitted = false;
@@ -23,7 +25,7 @@ export class LoginFormComponent {
   ngOnInit(): void {
       this.form = this.formBuilder.group(
         {
-          username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+          email: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
           password: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(40)]
           ]
         },
@@ -36,7 +38,7 @@ export class LoginFormComponent {
     if (this.form.invalid) {
       return;
     }
-    //this.loginValue.emit(this.form.value); just insert the service here
+    this.loginValue.emit(this.form.value);
   }
 
 }

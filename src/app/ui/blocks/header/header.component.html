@@ -1,1 +1,12 @@
-<p>header works!</p>
+
+<header class="header">
+  <img src="/assets/icons/eco-market-logo.webp" alt="eco-market logo">
+  <div class="header__container">
+    @for (item of linkedButton; track $index) {
+      <a routerLink="{{item.link}}" class="but">
+        <button class="main__button">{{item.label}}</button>
+      </a>
+
+    }
+  </div>
+</header>
