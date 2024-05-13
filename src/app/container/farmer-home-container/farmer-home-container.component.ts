@@ -12,15 +12,15 @@ export class FarmerHomeContainerComponent {
   navigationElements: LinkedButton[]= [
     {
       label: 'Crear Producto',
-      link: '/farmer/create-product'
+      link: '/farm/create-product'
     },
     {
       label: 'Lista de compañias',
-      link: '/farmer/companies'
+      link: '/farm/companies'
     },
     {
       label: 'Lista de productos',
-      link: '/farmer/products'
+      link: '/farm/products'
     }
   ];
 }
