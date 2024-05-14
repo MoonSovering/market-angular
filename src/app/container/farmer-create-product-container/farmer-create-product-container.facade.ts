@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, Subscription, mergeMap, of, switchMap, tap } from "rxjs";
+import { Observable, Subscription, of, switchMap, tap } from "rxjs";
 import { AppState } from "../../core/state/app.state";
 import { PexelApiService } from "../../core/services/pexel-api.service";
 import { IProductCategory } from "../../core/models/product-category.model";
@@ -37,7 +37,15 @@ export class FarmerCreateProductFacade {
     this.subscriptions.unsubscribe();
   }
 
-
+  getProductImage(): void {
+    this.appstate.product.$().pipe(
+      tap((product) => {
+        this.pexelApiService.getImages('1').subscribe((result) => {
+          this.appstate.product.set({...product, photo: {url: result.photos[0].url, alt: result.photos[0].alt} });
+        });
+      })
+    )
+  }
   getCategories(): void {{
     this.subscriptions.add(
       this.farmerService.getCategories().pipe(
@@ -58,7 +66,6 @@ export class FarmerCreateProductFacade {
   postProduct(formData: ICreateProduct): void {
     const id: string = this.storageService.get('id');
     const data: ICreateProduct = {...formData, farmer_id: id};
-    console.log("data: "+formData.name, formData.price, formData.category_id, formData.stock, data.farmer_id);
     this.subscriptions.add(
       this.farmerService.postProduct(formData).pipe(
         tap((response) => {

@@ -16,5 +16,5 @@ export class ListProductsComponent {
 
   constructor(
 
-  ) { console.log(this.farmer);}
+  ) {}
 }
