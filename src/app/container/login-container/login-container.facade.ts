@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { IFarmer } from "../../core/models/product.model";
 import { AuthService } from "../../core/services/auth.service";
 import { ILogin } from "../../core/models/interfaces/login.interface";
+import { LoginFarmer } from "../../core/models/login-farmer.model";
 
 
 @Injectable({
@@ -31,11 +32,11 @@ export class LoginContainerFacade {
   }
 
   getFarmer(formData: ILogin): void {
-    console.log(formData);
+    console.log(this.farmer$());
     this.subscriptions.add(
       this.authService.farmerLogin(formData).pipe(
         tap(this.appState.farmer.set.bind(this)),
-        tap(() => this.router.navigate(["/farm/home"]))
+        tap(() => this.router.navigate(["/farm"]))
       ).subscribe()
     );
   }

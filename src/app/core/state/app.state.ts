@@ -13,4 +13,7 @@ export class AppState {
    get farmer(){
       return this.farmerState.farmerStore();
    }
+   get companies(){
+     return this.farmerState.companiesStore();
+   }
 }

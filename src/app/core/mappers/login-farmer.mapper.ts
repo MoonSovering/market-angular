@@ -4,7 +4,7 @@ import { LoginFarmer } from "../models/login-farmer.model";
 @Injectable({
   providedIn: 'root'
 })
-export class loginFarmer{
+export class LoginFarmerMapper{
   map(payload: any): LoginFarmer{
     const product = payload.product.map((product) => {
       return {

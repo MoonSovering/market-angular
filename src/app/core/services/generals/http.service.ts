@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ErrosService } from './errors.service';
@@ -13,8 +13,10 @@ export class HttpService {
   ) { }
 
 
-  get<T>(url: string): Observable<T> {
-    return this.http.get<T>(url)
+  get<T>(url: string, header?: HttpHeaders): Observable<T> {
+    return this.http.get<T>(url, {
+      headers: header ? header : null
+    })
     .pipe(
       catchError((error) => this.handleError(error))
     )

@@ -1,3 +1,5 @@
+import { Photo } from "./interfaces/images-api.interfaces";
+
 export interface ICompany {
   companyId: string;
   name:      string;
@@ -6,6 +8,7 @@ export interface ICompany {
   email:     string;
   password:  string;
   status:    string;
+  photo?:    Photo;
 }
 
 export interface Contact {

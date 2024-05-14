@@ -11,7 +11,7 @@ export interface IFarmer {
   type:       FarmTpe[];
   waste:      Waste[];
   status:     string;
-  photo: Photo;
+  photo?: Photo;
 }
 
 export interface Contact {

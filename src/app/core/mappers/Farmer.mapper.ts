@@ -5,8 +5,8 @@ import { Contact, FarmTpe, IFarmer, Waste } from "../models/product.model";
   providedIn: 'root'
 })
 export class FarmerMapper {
-  map(payload: any): IFarmer {
-    return payload.map((farmer: any) => ({
+  map(farmer: any): IFarmer {
+    return {
       farmerId: farmer.farmerId,
       farmerName: farmer.farmerName,
       email: farmer.email,
@@ -18,7 +18,7 @@ export class FarmerMapper {
       waste: this.mapWastes(farmer.waste),
       status: farmer.status,
       photo: farmer.photo
-    }));
+    };
   }
 
   private mapContacts(contacts: any[]): Contact[] {

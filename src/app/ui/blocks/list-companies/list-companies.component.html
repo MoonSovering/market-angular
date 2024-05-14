@@ -1,1 +1,19 @@
-<p>list-companies works!</p>
+
+
+<main class="main">
+  @if (companies == null) {
+    <h1>No tenemos ninguna compañia disponible en este momento, por favor intentelo mas adelante.</h1>
+  }@else {
+    <h1 class="main__h1">Nuestras compañias asociadas!</h1>
+    <ul class="main__ul">
+      @for (company of companies; track $index) {
+        <div class="main__container">
+          <img src="{{company.photo.url}}" alt="{{company.photo.alt}}" class="main__img">
+          <h3 class="main__h3">{{company.name}}</h3>
+          <p class="main__p">{{company.email}}</p>
+          <p class="main__p">{{company.address}}</p>
+        </div>
+      }
+    </ul>
+  }
+</main>

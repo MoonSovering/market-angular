@@ -7,4 +7,5 @@ export const URL_RESOURCES = {
   getAllFarmer: `${environment.apiUrl}/farmer`,
   getAllCompany: `${environment.apiUrl}/companies`,
   postProduct: `${environment.apiUrl}/waste/create`,
+  getOneFarmer: `${environment.apiUrl}/farmer/get`
 }
