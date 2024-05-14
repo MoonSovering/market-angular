@@ -47,7 +47,6 @@ export class FarmerService {
   postProduct(createDate: ICreateProduct) {
     const url = URL_RESOURCES.postProduct;
     const mappedData = this.createProductMapper.map(createDate);
-    console.log("postData: "+mappedData);
     return this.httpService.post(url, mappedData).pipe(
       map((result) => this.productCreateResponseMapper.map(result))
     );
@@ -56,7 +55,6 @@ export class FarmerService {
   postWaste(createDate: ICreateProduct) {
     const url = URL_RESOURCES.postWaste;
     const mappedData = this.createWasteMapper.map(createDate);
-    console.log(mappedData.idFarmer, mappedData.idProduct);
     return this.httpService.post(url, mappedData).pipe(
       map((result) => this.productCreateResponseMapper.map(result))
     );

@@ -1,4 +1,4 @@
-@if (product == null) {
+
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
     <h1 class="title">Bienvenido!</h1>
     <h2 class="subtitle">Vamos a crear tu producto!</h2>
@@ -27,9 +27,3 @@
     </div>
     <button type="submit" class="submit">submit</button>
   </form>
-}@else{
-  <h1>Tu prodcuto ha sido creado exitosamente!</h1>
-  <a routerLink="/farm/products" class="but">
-    <button class="submit" >Vamos!</button>
-  </a>
-}

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { CreateProductComponent } from '../../ui/blocks/create-product/create-product.component';
-import { IProduct } from '../../core/models/interfaces/product.interface';
 import { ICreateProduct } from '../../core/models/interfaces/create-product.interface';
 import { Observable } from 'rxjs';
 import { IProductCategory } from '../../core/models/product-category.model';
@@ -27,7 +26,6 @@ export class FarmerCreateProductContainerComponent {
     this.facade.initSubscriptions();
     this.getCategories();
     this.initalizeSubscriptions();
-    console.log(this.product$);
   }
 
   ngOnDestroy(): void {
@@ -41,7 +39,6 @@ export class FarmerCreateProductContainerComponent {
     this.facade.postProduct(productData);
   }
   private initalizeSubscriptions (): void {
-    this.product$ = this.facade.products$();
     this.categories$ = this.facade.categories$();
   }
 }
