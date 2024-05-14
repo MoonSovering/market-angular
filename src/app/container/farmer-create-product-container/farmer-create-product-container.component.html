@@ -1,1 +1,3 @@
-<p>farmer-create-product-container works!</p>
+
+
+<app-create-product [categories]="categories$ | async" (buyProduct)="postProduct($event)" [product]="product$|async"></app-create-product>

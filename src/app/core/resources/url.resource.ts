@@ -6,6 +6,8 @@ export const URL_RESOURCES = {
   pexelApi: `${environment.pexelUrl}`,
   getAllFarmer: `${environment.apiUrl}/farmer`,
   getAllCompany: `${environment.apiUrl}/companies`,
-  postProduct: `${environment.apiUrl}/waste/create`,
-  getOneFarmer: `${environment.apiUrl}/farmer/get`
+  postProduct: `${environment.apiUrl}/create/product`,
+  getOneFarmer: `${environment.apiUrl}/farmer/get`,
+  getCategories: `${environment.apiUrl}/product-category`,
+  postWaste: `${environment.apiUrl}/waste/create`,
 }

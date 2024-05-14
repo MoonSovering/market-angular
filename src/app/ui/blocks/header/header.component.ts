@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LinkedButton } from '../../../core/models/interfaces/linked-button.interface';
 import { RouterLink } from '@angular/router';
 
@@ -10,16 +10,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  @Input() buttons: LinkedButton[];
+  @Output() linkedButtonValue = new EventEmitter<string>();
 
-  linkedButton: LinkedButton[] = [
-    {
-      label: 'Home',
-      link: '/'
-    },
-    {
-      label: 'logout',
-      link: '/auth/sign-in'
-    }
-  ];
-
+  handleClick(button: string) {
+    this.linkedButtonValue.emit(button);
+  }
 }

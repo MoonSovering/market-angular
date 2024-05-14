@@ -1,1 +1,35 @@
-<p>create-product works!</p>
+@if (product == null) {
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <h1 class="title">Bienvenido!</h1>
+    <h2 class="subtitle">Vamos a crear tu producto!</h2>
+    <div class="input-container ic1">
+      <input id="firstname" class="input" type="text" formControlName="name" placeholder=" " />
+      <div class="cut"></div>
+      <label for="firstname" class="placeholder">Nombre</label>
+    </div>
+    <div class="input-container ic2">
+      <input id="lastname" class="input" type="text" formControlName="price" placeholder=" " />
+      <div class="cut"></div>
+      <label for="lastname" class="placeholder">Precio</label>
+    </div>
+    <div class="input-container ic2">
+      <input id="lastname" class="input" type="text" formControlName="stock" placeholder=" " />
+      <div class="cut"></div>
+      <label for="lastname" class="placeholder">Cantidad</label>
+    </div>
+    <div class="input-container ic2">
+      <select name="category" id="category" class="input" formControlName="category_id">
+        <option value="" disabled selected>Categorias</option>
+        @for (category of categories; track $index) {
+          <option value="{{category.id}}">{{category.name}}</option>
+        }
+      </select>
+    </div>
+    <button type="submit" class="submit">submit</button>
+  </form>
+}@else{
+  <h1>Tu prodcuto ha sido creado exitosamente!</h1>
+  <a routerLink="/farm/products" class="but">
+    <button class="submit" >Vamos!</button>
+  </a>
+}

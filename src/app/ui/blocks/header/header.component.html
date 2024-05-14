@@ -2,11 +2,10 @@
 <header class="header">
   <img src="/assets/icons/eco-market-logo.webp" alt="eco-market logo">
   <div class="header__container">
-    @for (item of linkedButton; track $index) {
-      <a routerLink="{{item.link}}" class="but">
-        <button class="main__button">{{item.label}}</button>
+    @for (button of buttons; track $index) {
+      <a routerLink="{{button.link}}" class="but">
+        <button class="main__button" (click)="handleClick(button.label)">{{button.label}}</button>
       </a>
-
     }
   </div>
 </header>
