@@ -3,9 +3,9 @@
 
 <main class="main">
 @if(products == null){
-  <h1>Unfortunaly we dont have any available products D:</h1>
+  <h1>Desafortunadamente no tenemos ningun producto disponible.</h1>
   }@else {
-    <h1 class="main__title">Look at our available products!</h1>
+    <h1 class="main__title">Nuestros productos disponible.</h1>
     <ul class="main__ul">
       @for (item of products; track $index) {
         <div class="main__container">
@@ -26,8 +26,8 @@
             <label class="main__label">Categoria</label>
             <p class="main__p">{{item.product.category}}</p>
           </div>
-          <button [disabled]="addDisableButton(item)" (click)="getProduct(item)" class="main__button">Add</button>
-          <button [disabled]="deleteDisableButton(item)" (click)="deleteProduct(item)" class="main__button">Delete</button>
+          <button [disabled]="addDisableButton(item)" (click)="getProduct(item)" class="main__button">Agregar</button>
+          <button [disabled]="deleteDisableButton(item)" (click)="deleteProduct(item)" class="main__button">Eliminar</button>
         </div>
       }
     </ul>
