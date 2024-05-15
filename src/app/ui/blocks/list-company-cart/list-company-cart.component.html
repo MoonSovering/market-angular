@@ -1,8 +1,8 @@
 <main class="main">
   @if(products == null){
-    <h1>Unfortunaly we dont have any available products D:</h1>
+    <h1>No tenemos ningun granjero disponible en este momento, por favor intentelo mas adelante.</h1>
     }@else {
-      <h1 class="main__title">Look at our available products!</h1>
+      <h1 class="main__title">Nuestros productos disponibles!</h1>
       <ul class="main__ul">
         @for (item of products; track $index) {
           <div class="main__container">
