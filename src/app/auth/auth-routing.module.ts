@@ -4,6 +4,8 @@ import { AuthLayoutComponent } from '../ui/layouts/auth-layout/auth-layout.compo
 import { RegisterFormComponent } from '../ui/forms/register-form/register-form.component';
 import { LoginContainerComponent } from '../container/login-container/login-container.component';
 import { publicMarketGuard } from './public-market.guard';
+import { RegisterContainerComponent } from '../container/register-container/register-container.component';
+import { RegisterFarmerComponent } from '../ui/layouts/register-farmer/register-farmer.component';
 
 const routes: Routes = [
   {
@@ -19,12 +21,12 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: AuthLayoutComponent,
+    component: RegisterFarmerComponent,
     children: [
       {
         path: '',
-        component: RegisterFormComponent,
-        outlet: 'auth-form'
+        component: RegisterContainerComponent,
+        outlet: 'auth-register-farmer'
       }
     ], canActivate: [publicMarketGuard]
   }

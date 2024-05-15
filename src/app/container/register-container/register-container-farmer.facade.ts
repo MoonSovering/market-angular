@@ -1,9 +1,12 @@
 import { Subscription, tap } from "rxjs";
 import { AuthService } from "../../core/services/auth.service";
-import { ICreateFarmer } from "../../core/models/interfaces/create-farmer.interface";
 import { Router } from "@angular/router";
+import { Injectable } from "@angular/core";
 
+@Injectable({
+  providedIn: "root"
 
+})
 export class RegisterContainerFarmerFacade {
   private subscriptions: Subscription;
   constructor(
@@ -20,7 +23,6 @@ export class RegisterContainerFarmerFacade {
   }
 
   registerFarmer(registerData): void {
-    console.log("im data2" + registerData);
     this.subscriptions.add(
       this.authService.farmerRegister(registerData).pipe(
         tap(() => this.router.navigate(["/auth/login"]))

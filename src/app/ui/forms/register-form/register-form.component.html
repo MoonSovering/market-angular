@@ -1,8 +1,8 @@
 
 <div class="auth">
-  <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="auth__form">
+  <form [formGroup]="form" (submit)="onSubmit($event)" class="auth__form">
     <title class="form__title">Registro de granjero</title>
-      <app-input type="text" placeholder="Nombre" formControlName="username"><span class="container__span"></span></app-input>
+      <app-input type="text" placeholder="Nombre" formControlName="userName"><span class="container__span"></span></app-input>
       <app-input type="email" placeholder="Correo" formControlName="email"><span class="container__span"></span></app-input>
       <app-input type="password" placeholder="Contraseña" formControlName="password"><span class="container__span"></span></app-input>
       <app-input type="text" placeholder="Apellido" formControlName="lastName"><span class="container__span"></span></app-input>

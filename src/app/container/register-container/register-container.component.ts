@@ -13,22 +13,17 @@ export class RegisterContainerComponent {
   @Input() registerValue: ICreateFarmer;
   constructor(
     private readonly facade: RegisterContainerFarmerFacade
-  ) { this.getFormData(this.registerValue);
-    console.log("im data "+this.registerValue);
-    console.log("im data ");
+  ) {
   }
 
   ngOnInit(): void {
     this.facade.initSubscriptions();
-    this.getFormData(this.registerValue);
   }
 
   ngOnDestroy(): void {
     this.facade.destroySubscription();
   }
-  getFormData(formData): void {
-    console.log("im data "+formData);
-    console.log("adsjadsa");
+  getFormData(formData: ICreateFarmer): void {
     this.facade.registerFarmer(formData);
   }
 }

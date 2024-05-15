@@ -13,10 +13,10 @@ import { ICreateFarmer } from '../../../core/models/interfaces/create-farmer.int
   styleUrl: './register-form.component.css'
 })
 export class RegisterFormComponent {
-  @Output() formData = new EventEmitter();
+  @Output() formData = new EventEmitter<ICreateFarmer>();
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
+    userName: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
     lastName: new FormControl(''),
@@ -28,9 +28,8 @@ export class RegisterFormComponent {
   constructor(private formBuilder: FormBuilder) {
   }
   ngOnInit(): void {
-    this.formData.emit("hola");
     this.form = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      userName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30), Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(40)]],
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
@@ -46,8 +45,7 @@ export class RegisterFormComponent {
     if (this.form.invalid) {
       return;
     }
-    this.formData.emit("hola");
-    console.log(this.form.value);
+    this.formData.emit(this.form.value);
   }
 
   private initContactField(): FormGroup {
