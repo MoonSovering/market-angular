@@ -2,10 +2,9 @@
 <div class="auth">
   <form [formGroup]="form" (submit)="onSubmit($event)" class="auth__form">
     <title class="form__title">Registro de granjero</title>
-      <app-input type="text" placeholder="Nombre" formControlName="userName"><span class="container__span"></span></app-input>
+      <app-input type="text" placeholder="Nombre" formControlName="name"><span class="container__span"></span></app-input>
       <app-input type="email" placeholder="Correo" formControlName="email"><span class="container__span"></span></app-input>
       <app-input type="password" placeholder="Contraseña" formControlName="password"><span class="container__span"></span></app-input>
-      <app-input type="text" placeholder="Apellido" formControlName="lastName"><span class="container__span"></span></app-input>
       <app-input type="text" placeholder="Dirección" formControlName="address"><span class="container__span"></span></app-input>
       <section class="form_contact">
         <div formArrayName="contact" class="form_contact">
@@ -14,15 +13,6 @@
             <div [formGroupName]="i">
               <app-input type="text" placeholder="Typo de contacto" formControlName="contactType"><span class="container__span"></span></app-input>
               <app-input type="text" placeholder="Contacto" formControlName="contact"><span class="container__span"></span></app-input>
-            </div>
-          </div>
-        </div>
-        <div formArrayName="type" class="form_type">
-          <h2 class="form_title_two">Información de la granja</h2>
-          <div *ngFor="let type of form.get('type')['controls']; let i = index">
-            <div [formGroupName]="i">
-              <app-input type="text" placeholder="Typo de granja" formControlName="typeFarm"><span class="container__span"></span></app-input>
-              <app-input type="text" placeholder="Nombre de la granja" formControlName="farm"><span class="container__span"></span></app-input>
             </div>
           </div>
         </div>
@@ -35,6 +25,6 @@
   </form>
   <div class="form-container">
     <p class="form__paragraph"><a routerLink="/auth/login">¿Ya tienes una cuenta?</a></p>
-    <p class="form__paragraph"><a routerLink="/auth/register-company">¿Registrar compañia?</a></p>
+    <p class="form__paragraph"><a routerLink="/auth/auth/register">¿Registrar granjero?</a></p>
   </div>
 </div>

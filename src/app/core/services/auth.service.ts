@@ -10,6 +10,9 @@ import { ICreateFarmer } from '../models/interfaces/create-farmer.interface';
 import { CreateFarmerMapper } from '../mappers/create-farmer.mapper';
 import { FarmerResponseMapper } from '../mappers/create-farmer-response.mapper';
 import { ICreateFarmerResponse } from '../models/interfaces/create-farmer-response.interface';
+import { ICreateCompany } from '../models/interfaces/create-company.interface';
+import { CreateCompanyMapper } from '../mappers/create-company.mapper';
+import { CompanyResponseMapper } from '../mappers/create-company-response.mapper';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,9 @@ export class AuthService {
     private readonly httpService: HttpService,
     private readonly loginFarmerMapper: LoginFarmerMapper,
     private readonly registerFarmerMapper: CreateFarmerMapper,
+    private readonly createCompanyMapper: CreateCompanyMapper,
     private readonly farmerResponseMapper: FarmerResponseMapper,
+    private readonly companyResponseMapper: CompanyResponseMapper,
     private readonly loginMapper: loginMapper,
     private readonly storage: StorageService
   ) { }
@@ -39,12 +44,21 @@ export class AuthService {
 
   farmerRegister(registerData: ICreateFarmer): Observable<ICreateFarmerResponse>{
     const mappedData = this.registerFarmerMapper.map(registerData);
-    console.log(mappedData);
     const url = URL_RESOURCES.registerFarmer;
     const farmer = this.httpService.post<ICreateFarmer>(url, mappedData)
     .pipe(
       map((result) => this.farmerResponseMapper.map(result) )
     );
     return farmer;
+  }
+
+  companyRegister(registerData): Observable<ICreateCompany>{
+    const mappedData = this.createCompanyMapper.map(registerData);
+    const url = URL_RESOURCES.registerCompany;
+    const company = this.httpService.post<ICreateCompany>(url, mappedData)
+    .pipe(
+      map((result) => this.companyResponseMapper.map(result) )
+    );
+    return company;
   }
 }

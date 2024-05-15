@@ -6,6 +6,8 @@ import { LoginContainerComponent } from '../container/login-container/login-cont
 import { publicMarketGuard } from './public-market.guard';
 import { RegisterContainerComponent } from '../container/register-container/register-container.component';
 import { RegisterFarmerComponent } from '../ui/layouts/register-farmer/register-farmer.component';
+import { RegisterCompanyLayoutComponent } from '../ui/layouts/register-company-layout/register-company-layout.component';
+import { RegisterCompanyContainerComponent } from '../container/register-company-container/register-company-container.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,17 @@ const routes: Routes = [
         outlet: 'auth-register-farmer'
       }
     ], canActivate: [publicMarketGuard]
+  },
+  {
+    path: 'register-company',
+    component: RegisterCompanyLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: RegisterCompanyContainerComponent,
+        outlet: 'auth-register-company'
+      }
+    ]
   }
 ];
 
