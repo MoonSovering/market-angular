@@ -1,0 +1,26 @@
+
+
+
+<main>
+@if(products == null){
+  <h1>Unfortunaly we dont have any available products D:</h1>
+  }@else {
+    <h1>Look at our available products!</h1>
+    <ul class="main__ul">
+      @for (item of products; track $index) {
+        <div class="main__container">
+          <img src="{{item.photo.url}}" alt="{{item.photo.alt}}" class="main__img">
+          <h3 class="main__h3">{{item.product.name}}</h3>
+          <p class="main__p">${{item.product.price}}</p>
+          <p class="main__p">amount: {{item.product.stock}}</p>
+          <p class="main__p">{{item.product.category}}</p>
+          <button [disabled]="addDisableButton(item)" (click)="getProduct(item)" class="main__button">Add</button>
+          <button [disabled]="deleteDisableButton(item)" (click)="deleteProduct(item)" class="main__button">Delete</button>
+        </div>
+      }
+    </ul>
+    <!-- <app-linked-button [item]="redirect" class="main__card__button"></app-linked-button> -->
+  }
+  <!-- {{products|json}} -->
+</main>
+

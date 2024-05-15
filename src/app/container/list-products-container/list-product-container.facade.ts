@@ -35,7 +35,6 @@ export class ListProductContainerFacade {
   }
 
   getFarmer(): void {
-    console.log(this.farmer$());
     const id: String = this.storageService.get('id');
     this.subscriptions.add(
       this.farmerService.getFarmer(id).pipe(

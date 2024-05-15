@@ -13,8 +13,4 @@ import { LoginFarmer } from '../../../core/models/login-farmer.model';
 })
 export class ListProductsComponent {
   @Input() farmer: any[];
-
-  constructor(
-
-  ) {}
 }

@@ -1,7 +1,10 @@
+import { Photo } from "./interfaces/images-api.interfaces";
+
 export interface IWaste {
   wasteId:        string;
   farmer:         Farmer;
   product:        Product;
+  photo?:         Photo;
 }
 
 export interface Farmer {
