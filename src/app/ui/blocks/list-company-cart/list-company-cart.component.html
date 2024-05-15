@@ -1,0 +1,33 @@
+<main class="main">
+  @if(products == null){
+    <h1>Unfortunaly we dont have any available products D:</h1>
+    }@else {
+      <h1 class="main__title">Look at our available products!</h1>
+      <ul class="main__ul">
+        @for (item of products; track $index) {
+          <div class="main__container">
+            <img src="{{item.photo.url}}" alt="{{item.photo.alt}}" class="main__img">
+            <div class="main__container--section">
+              <label class="main__label">Nombre</label>
+              <h3 class="main__h3">{{item.product.name}}</h3>
+            </div>
+            <div class="main__container--section">
+              <label class="main__label">Precio</label>
+              <p class="main__p">${{item.product.price}}</p>
+            </div>
+            <div class="main__container--section">
+              <label class="main__label">Cantidad disponible</label>
+              <p class="main__p">{{item.product.stock}}</p>
+            </div>
+            <div class="main__container--section">
+              <label class="main__label">Categoria</label>
+              <p class="main__p">{{item.product.category}}</p>
+            </div>
+          </div>
+        }
+      </ul>
+      <a class="main__anchor">
+        <button (click)="onBuyClick(redirect.link)" class="main__button main__button--var">{{redirect.label}}</button>
+      </a>
+    }
+  </main>

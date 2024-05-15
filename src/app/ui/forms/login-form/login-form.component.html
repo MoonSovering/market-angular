@@ -1,6 +1,6 @@
 
 <div class="auth">
-  <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="auth__form">
+  <form [formGroup]="form" (submit)="onSubmit($event)" class="auth__form">
     <title class="form__title">Login</title>
     <div class="form__container">
         <app-input type="text" placeholder="Username" formControlName="email" class="container__input"><span class="container__span"></span></app-input>

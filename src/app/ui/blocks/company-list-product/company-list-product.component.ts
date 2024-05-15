@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IWaste } from '../../../core/models/waste.model';
 import { JsonPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { LinkedButton } from '../../../core/models/interfaces/linked-button.interface';
 
 @Component({
   selector: 'app-company-list-product',
   standalone: true,
-  imports: [JsonPipe],
+  imports: [JsonPipe, RouterLink],
   templateUrl: './company-list-product.component.html',
   styleUrl: './company-list-product.component.css'
 })
@@ -15,6 +17,10 @@ export class CompanyListProductComponent {
 
   selectProducts: IWaste[] = [];
   disabledProducts: Set<IWaste> = new Set();
+  redirect: LinkedButton = {
+    label: 'Ir a tu carrito de compras!',
+    link: '/company/cart'
+  }
 
     getProduct(product: IWaste) {
       this.selectProducts.push(product);

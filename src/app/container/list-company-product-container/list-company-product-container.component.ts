@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CompanyListProductComponent } from '../../ui/blocks/company-list-product/company-list-product.component';
 import { ListCompanyProductFacade } from './list-company-product.facade';
 import { Observable } from 'rxjs';
@@ -28,6 +28,10 @@ export class ListCompanyProductContainerComponent {
   }
   getWastes(): void {
     this.facade.getWastes();
+  }
+
+  shopingCart(selectedProducts: IWaste[]): void {
+    this.facade.fillSelectProducts(selectedProducts);
   }
 
   private initializeSubscriptions(): void {

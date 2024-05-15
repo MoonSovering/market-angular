@@ -1,2 +1,2 @@
 
-<app-company-list-product [products]="wastes$ | async"></app-company-list-product>
+<app-company-list-product [products]="wastes$ | async" (captureProduct)="shopingCart($event)"></app-company-list-product>

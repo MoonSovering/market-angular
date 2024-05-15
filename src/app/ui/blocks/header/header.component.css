@@ -3,6 +3,7 @@
   display: flex;
   justify-content: space-between;
   width: 99%;
+  height: 60px;
   padding: 0.4em;
   position: sticky;
   top: 0;
@@ -35,7 +36,7 @@
 
 
 .main__button{
-  width: 6.5em;
+  width: 4.5em;
   height: 2.3em;
   margin: 0.5em;
   background: #d78802;

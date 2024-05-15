@@ -6,6 +6,8 @@ import { ListFarmerLayoutComponent } from '../ui/layouts/list-farmer-layout/list
 import { ListFarmerContainerComponent } from '../container/list-farmer-container/list-farmer-container.component';
 import { ListCompanyProductsLayoutComponent } from '../ui/layouts/list-company-products-layout/list-company-products-layout.component';
 import { ListCompanyProductContainerComponent } from '../container/list-company-product-container/list-company-product-container.component';
+import { ListCompanyCartContainerComponent } from '../container/list-company-cart-container/list-company-cart-container.component';
+import { ListCompanyCartLayoutComponent } from '../ui/layouts/list-company-cart-layout/list-company-cart-layout.component';
 
 const routes: Routes = [
   {
@@ -41,10 +43,18 @@ const routes: Routes = [
       }
     ]
   },
-  // {
-  //   path: 'cart',
+  {
+    path: 'cart',
+    component: ListCompanyCartLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: ListCompanyCartContainerComponent,
+        outlet: 'list-company-cart-page'
+      }
+    ]
 
-  // }
+  }
 ];
 
 @NgModule({

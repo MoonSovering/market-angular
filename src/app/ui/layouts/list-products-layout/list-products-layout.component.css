@@ -1,6 +1,6 @@
 .main{
   background-image: url('/assets/list-farmer-product.jpeg');
-  height: calc(100vh - 188px);
+  height: calc(100vh - 170px);
   width: 100%;
   display: flex;
   justify-content: center;

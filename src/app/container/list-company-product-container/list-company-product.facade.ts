@@ -37,7 +37,9 @@ export class ListCompanyProductFacade {
       ).subscribe()
     );
   }
-
+  fillSelectProducts(selectedProducts: IWaste[]): void {
+    this.appState.cartProductsStore.set(selectedProducts);
+  }
   private getImages(wastes: IWaste[]): Observable<IWaste[]> {
     return this.pexelApiService.getImages(wastes.length.toString()).pipe(
       map((images: any) => {
