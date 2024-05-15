@@ -38,7 +38,7 @@ export class ListFarmerContainerFacade {
     );
   }
   private getImages(farmers: IFarmer[]): Observable<IFarmer[]> {
-    return this.pexelApiService.getImages(farmers.length.toString()).pipe(
+    return this.pexelApiService.getImages(farmers.length.toString(), 'farmer').pipe(
       map((images: IPexelImages)=> {
         return farmers.map( (farmer: IFarmer, index) => ({
           ...farmer,

@@ -44,7 +44,7 @@ export class ListProductContainerFacade {
     );
   }
   private getImages(products: IProduct[]): Observable<IProduct[]> {
-    return this.pexelApiService.getImages(products.length.toString()).pipe(
+    return this.pexelApiService.getImages(products.length.toString(), 'plants').pipe(
       map((images: IPexelImages) => {
         return products.map( (company: IProduct, index) => ({
           ...company,

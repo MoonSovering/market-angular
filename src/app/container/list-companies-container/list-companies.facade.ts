@@ -39,7 +39,7 @@ export class ListCompaniesFacade{
     );
   }
   private getImages(companies: ICompany[]): Observable<ICompany[]> {
-    return this.pexelApiService.getImages(companies.length.toString()).pipe(
+    return this.pexelApiService.getImages(companies.length.toString(), 'logo').pipe(
       map((images: IPexelImages) => {
         return companies.map( (company: ICompany, index) => ({
           ...company,

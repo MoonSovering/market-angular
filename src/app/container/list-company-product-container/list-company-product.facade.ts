@@ -41,7 +41,7 @@ export class ListCompanyProductFacade {
     this.appState.cartProductsStore.set(selectedProducts);
   }
   private getImages(wastes: IWaste[]): Observable<IWaste[]> {
-    return this.pexelApiService.getImages(wastes.length.toString()).pipe(
+    return this.pexelApiService.getImages(wastes.length.toString(), 'compost').pipe(
       map((images: any) => {
         return wastes.map( (waste: IWaste, index) => ({
           ...waste,

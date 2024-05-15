@@ -40,7 +40,7 @@ export class FarmerCreateProductFacade {
   getProductImage(): void {
     this.appstate.product.$().pipe(
       tap((product) => {
-        this.pexelApiService.getImages('1').subscribe((result) => {
+        this.pexelApiService.getImages('1', 'plantas').subscribe((result) => {
           this.appstate.product.set({...product, photo: {url: result.photos[0].url, alt: result.photos[0].alt} });
         });
       })
