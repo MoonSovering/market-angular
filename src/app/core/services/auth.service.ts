@@ -35,7 +35,6 @@ export class AuthService {
     const url = URL_RESOURCES.login;
     const user = this.httpService.post<LoginFarmer>(url, mappedData)
     .pipe(
-      map((result) => this.loginFarmerMapper.map(result) ),
       tap((result) => this.storage.set('status', result.status)),
       tap((result) => this.storage.set('id', result.id))
     );

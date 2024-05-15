@@ -1,6 +1,7 @@
 import { Router } from "@angular/router";
 import { StorageService } from "../../core/services/generals/storage.service";
 import { Injectable } from "@angular/core";
+import { LinkedButton } from '../../core/models/interfaces/linked-button.interface';
 
 
 @Injectable({
@@ -10,8 +11,9 @@ import { Injectable } from "@angular/core";
 export class HeaderContainerFacade {
   constructor(
     private readonly store: StorageService,
-    private readonly router: Router
+    private readonly router: Router,
   ) {}
+
 
   public handleLinkedButtonValue(data: string): void {
     if(data === 'logout') {
@@ -22,5 +24,36 @@ export class HeaderContainerFacade {
         window.location.reload();
       }, 1000);
     }
+  }
+
+  public handleMenu(): LinkedButton[] {
+    const status = this.store.get('status');
+    if(status === 'FARMER') {
+      const linkedButton: LinkedButton[] = [
+        {
+          label: 'home',
+          link: '/farm'
+        },
+        {
+          label: 'logout',
+          link: '/auth/login'
+        }
+      ];
+      return linkedButton;
+    }
+    if(status === 'COMPANY') {
+      const linkedButton: LinkedButton[] = [
+        {
+          label: 'home',
+          link: '/company'
+        },
+        {
+          label: 'logout',
+          link: '/auth/login'
+        }
+      ];
+      return linkedButton;
+    }
+    return [];
   }
 }

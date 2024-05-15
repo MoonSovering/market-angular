@@ -38,6 +38,7 @@ export class LoginFormComponent {
     if (this.form.invalid) {
       return;
     }
+    console.log(this.form.value);
     this.loginValue.emit(this.form.value);
   }
 

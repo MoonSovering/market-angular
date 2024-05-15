@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core"
-import { Observable, Subscription, tap } from "rxjs";
+import { Observable, Subscription, finalize, tap } from "rxjs";
 import { AppState } from "../../core/state/app.state";
 import { Router } from "@angular/router";
 import { IFarmer } from "../../core/models/product.model";
@@ -32,11 +32,12 @@ export class LoginContainerFacade {
   }
 
   getFarmer(formData: ILogin): void {
-    console.log(this.farmer$());
     this.subscriptions.add(
       this.authService.farmerLogin(formData).pipe(
         tap(this.appState.farmer.set.bind(this)),
-        tap(() => this.router.navigate(["/farm"]))
+        finalize(() => {
+          window.location.reload();
+        })
       ).subscribe()
     );
   }

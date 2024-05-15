@@ -10,18 +10,12 @@ import { HeaderComponent } from '../../ui/blocks/header/header.component';
   templateUrl: './header-container.component.html'
 })
 export class HeaderContainerComponent {
-  constructor(private readonly headerContainerFacade: HeaderContainerFacade ) {}
-  linkedButton: LinkedButton[] = [
-    {
-      label: 'home',
-      link: '/farm'
-    },
-    {
-      label: 'logout',
-      link: '/auth/login'
-    }
-  ];
+  constructor(private readonly facade: HeaderContainerFacade ) {}
+  linkedButton: LinkedButton[] = [];
   handleLinkedButtonValue(data: string): void {
-    this.headerContainerFacade.handleLinkedButtonValue(data);
+    this.facade.handleLinkedButtonValue(data);
+  }
+  ngOnInit(): void {
+    this.linkedButton = this.facade.handleMenu();
   }
 }
