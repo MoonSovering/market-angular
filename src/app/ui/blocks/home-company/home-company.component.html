@@ -1,0 +1,17 @@
+
+
+<section class="main">
+  <h1>La ambición es el primer paso hacia</h1>
+  <h2 class="main__title-two">EL ÉXITO</h2>
+  <nav class="main__navigation">
+    <ul class="navigation_ul">
+      @for (item of navigationElements; track $index) {
+        <li class="navigation__list">
+          <a routerLink="{{item.link}}" class="button">
+            <button class="main__button">{{item.label}}</button>
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+</section>

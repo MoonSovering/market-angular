@@ -17,7 +17,6 @@ export class FarmerState {
   private companies$: BehaviorSubject<ICompany[]> = new BehaviorSubject<ICompany[]>(null);
   private categories$: BehaviorSubject<IProductCategory[]> = new BehaviorSubject<IProductCategory[]>(null);
   private product$: BehaviorSubject<IProductCreateResponse> = new BehaviorSubject<IProductCreateResponse>(null);
-  private
   constructor( private readonly factory: StateFactory ) { }
 
   farmerStore() {

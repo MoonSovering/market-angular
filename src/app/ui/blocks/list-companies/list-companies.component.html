@@ -9,9 +9,18 @@
       @for (company of companies; track $index) {
         <div class="main__container">
           <img src="{{company.photo.url}}" alt="{{company.photo.alt}}" class="main__img">
-          <h3 class="main__h3">{{company.name}}</h3>
-          <p class="main__p">{{company.email}}</p>
-          <p class="main__p">{{company.address}}</p>
+          <div class="main__container--section">
+            <label class="main__label">Nombre</label>
+            <h3 class="main__h3">{{company.name}}</h3>
+          </div>
+          <div class="main__container--section">
+            <label class="main__label">Correo electronico</label>
+            <p class="main__p">{{company.email}}</p>
+          </div>
+          <div class="main__label--section">
+            <label class="main__label">Dirección</label>
+            <p class="main__p">{{company.address}}</p>
+          </div>
         </div>
       }
     </ul>

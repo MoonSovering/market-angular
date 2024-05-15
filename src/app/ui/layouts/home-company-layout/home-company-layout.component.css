@@ -1,0 +1,8 @@
+.main{
+  background-image: url('/assets/home-farmer.jpeg');
+  height: calc(100vh - 188px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

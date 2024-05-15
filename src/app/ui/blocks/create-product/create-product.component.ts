@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { IProductCategory } from '../../../core/models/product-category.model';
 import { ICreateProduct } from '../../../core/models/interfaces/create-product.interface';
 import { JsonPipe } from '@angular/common';
-import { IProductCreateResponse } from '../../../core/models/interfaces/product-create-response.interface';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -26,24 +25,22 @@ export class CreateProductComponent {
   constructor( private formBuilder: FormBuilder, private router: Router){}
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group(
-      {
-        name: ['',],
-        price: [1,],
-        stock: [1,],
-        category_id: ['']
-      },
-    )
-}
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      price: [1, [Validators.required, Validators.min(0)]],
+      stock: [1, [Validators.required, Validators.min(0), Validators.pattern(/^-?\d*(\.\d+)?$/)]],
+      category_id: ['', Validators.required]
+    });
+  }
 
 onSubmit(): void {
     this.submitted = true;
     if (this.form.invalid) {
       return;
     }
-    console.log(this.form.value)
     this.buyProduct.emit(this.form.value);
-    this.router.navigate(['/farm/products']);
-
+    setTimeout(() => {
+      this.router.navigate(['/farm/products']);
+    }, 2000);
   }
 }

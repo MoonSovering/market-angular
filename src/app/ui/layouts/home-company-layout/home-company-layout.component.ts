@@ -4,12 +4,12 @@ import { FooterComponent } from '../../blocks/footer/footer.component';
 import { HeaderContainerComponent } from '../../../container/header-container/header-container.component';
 
 @Component({
-  selector: 'app-list-products-layout',
+  selector: 'app-home-company-layout',
   standalone: true,
   imports: [RouterOutlet, FooterComponent, HeaderContainerComponent],
-  templateUrl: './list-products-layout.component.html',
-  styleUrl: './list-products-layout.component.css'
+  templateUrl: './home-company-layout.component.html',
+  styleUrl: './home-company-layout.component.css'
 })
-export class ListProductsLayoutComponent {
+export class HomeCompanyLayoutComponent {
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, Subscription, concatMap, of, switchMap, tap } from "rxjs";
+import { Observable, Subscription, tap } from "rxjs";
 import { AppState } from "../../core/state/app.state";
 import { PexelApiService } from "../../core/services/pexel-api.service";
 import { IProductCategory } from "../../core/models/product-category.model";
@@ -55,7 +55,6 @@ export class FarmerCreateProductFacade {
   }}
 
   createWaste(data: ICreateProduct): void {
-    console.log(data);
     this.subscriptions.add(
       this.farmerService.postWaste(data).pipe(
         tap(this.appstate.product.set.bind(this))
@@ -63,13 +62,15 @@ export class FarmerCreateProductFacade {
     );
   }
 
-
   postProduct(formData: ICreateProduct): void {
     const id: string = this.storageService.get('id');
     const data: ICreateProduct = {...formData, farmer_id: id};
     this.subscriptions.add(
       this.farmerService.postProduct(formData).pipe(
-        concatMap((result) => this.farmerService.postWaste({ ...data, product_id: result.id })),
+        tap((result) => {
+          const productId = result.id;
+          this.createWaste({ ...data, product_id: productId });
+        })
       ).subscribe()
     );
   }

@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { FarmerState } from "./farmer.state";
+import { CompanyState } from "./company.state";
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { FarmerState } from "./farmer.state";
 export class AppState {
   constructor(
     private readonly farmerState: FarmerState,
+    private readonly companyState: CompanyState,
    )
    { }
 
@@ -21,5 +23,8 @@ export class AppState {
    }
     get product(){
       return this.farmerState.productStore();
+    }
+    get farmers(){
+      return this.companyState.farmersStore();
     }
 }

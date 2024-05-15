@@ -31,7 +31,7 @@ export class FarmerService {
   ) { }
 
   loginFarmer() {
-    const url = URL_RESOURCES.getAllFarmer;
+    const url = URL_RESOURCES.getAllFarmers;
     return this.httpService.get<IFarmer>(url)
     .pipe(
       map((result) => this.getFarmerMapper.map(result))

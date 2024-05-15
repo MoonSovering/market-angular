@@ -1,0 +1,31 @@
+
+<main class="main">
+  @if (farmers == null) {
+    <h1>No tenemos ningun granjero disponible en este momento, por favor intentelo mas adelante.</h1>
+  }@else {
+    <h1 class="main__h1">Nuestros granjeros asociadas!</h1>
+    <ul class="main__ul">
+      @for (farmer of farmers; track $index) {
+        <div class="main__container">
+          <img src="{{farmer.photo.url}}" alt="{{farmer.photo.alt}}" class="main__img">
+          <div class="main__container--section">
+            <label class="main__label">Nombre</label>
+            <h3 class="main__h3">{{farmer.farmerName}}</h3>
+          </div>
+          <div class="main__label--section">
+            <label class="main__label">Dirección</label>
+            <p class="main__p">{{farmer.address}}</p>
+          </div>
+          <div class="main__container--section">
+            <label class="main__label">Correo electronico</label>
+            <p class="main__p">{{farmer.email}}</p>
+          </div>
+          <div class="main__container--section">
+            <label class="main__label">Nombre de la granja</label>
+            <p class="main__p">{{farmer.type[0].farm}}</p>
+          </div>
+        </div>
+      }
+    </ul>
+  }
+</main>
