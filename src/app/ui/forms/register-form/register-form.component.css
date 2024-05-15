@@ -122,3 +122,9 @@
     text-align: center;
     padding-bottom: 26px;
   }
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+}

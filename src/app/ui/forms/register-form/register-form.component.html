@@ -1,37 +1,40 @@
 
 <div class="auth">
   <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="auth__form">
-    <title class="form__title">Register</title>
-      <app-input type="text" placeholder="Username" formControlName="username"><span class="container__span"></span></app-input>
-      <app-input type="email" placeholder="Email" formControlName="email"><span class="container__span"></span></app-input>
-      <app-input type="password" placeholder="Password" formControlName="password"><span class="container__span"></span></app-input>
-      <app-input type="text" placeholder="LastName" formControlName="lastName"><span class="container__span"></span></app-input>
-      <app-input type="text" placeholder="Address" formControlName="address"><span class="container__span"></span></app-input>
+    <title class="form__title">Registro de granjero</title>
+      <app-input type="text" placeholder="Nombre" formControlName="username"><span class="container__span"></span></app-input>
+      <app-input type="email" placeholder="Correo" formControlName="email"><span class="container__span"></span></app-input>
+      <app-input type="password" placeholder="Contraseña" formControlName="password"><span class="container__span"></span></app-input>
+      <app-input type="text" placeholder="Apellido" formControlName="lastName"><span class="container__span"></span></app-input>
+      <app-input type="text" placeholder="Dirección" formControlName="address"><span class="container__span"></span></app-input>
       <section class="form_contact">
         <div formArrayName="contact" class="form_contact">
-          <h2 class="form_title_two">Contact information</h2>
+          <h2 class="form_title_two">Información de contacto</h2>
           <div *ngFor="let contact of form.get('contact')['controls']; let i = index">
             <div [formGroupName]="i">
-              <app-input type="text" placeholder="Contact Type" formControlName="contactType"><span class="container__span"></span></app-input>
-              <app-input type="text" placeholder="Contact" formControlName="contact"><span class="container__span"></span></app-input>
+              <app-input type="text" placeholder="Typo de contacto" formControlName="contactType"><span class="container__span"></span></app-input>
+              <app-input type="text" placeholder="Contacto" formControlName="contact"><span class="container__span"></span></app-input>
             </div>
           </div>
         </div>
         <div formArrayName="type" class="form_type">
-          <h2 class="form_title_two">Farm information</h2>
+          <h2 class="form_title_two">Información de la granja</h2>
           <div *ngFor="let type of form.get('type')['controls']; let i = index">
             <div [formGroupName]="i">
-              <app-input type="text" placeholder="Farm Type" formControlName="typeFarm"><span class="container__span"></span></app-input>
-              <app-input type="text" placeholder="Farm Name" formControlName="farm"><span class="container__span"></span></app-input>
+              <app-input type="text" placeholder="Typo de granja" formControlName="typeFarm"><span class="container__span"></span></app-input>
+              <app-input type="text" placeholder="Nombre de la granja" formControlName="farm"><span class="container__span"></span></app-input>
             </div>
           </div>
         </div>
       </section>
       @if(form.valid){
-        <button type="submit" class="container__button">Register</button>
+        <button type="submit" class="container__button">Registrar</button>
       }@else{
-        <button type="submit" class="container__button container_button--disabled" [disabled]="!form.valid">Register</button>
+        <button type="submit" class="container__button container_button--disabled" [disabled]="!form.valid">Registrar</button>
       }
   </form>
-  <p class="form__paragraph"><a routerLink="/auth/login">¿Already have account?</a></p>
+  <div class="form-container">
+    <p class="form__paragraph"><a routerLink="/auth/login">¿Ya tienes una cuenta?</a></p>
+    <p class="form__paragraph"><a routerLink="/auth/login-company">¿Registrar compañia?</a></p>
+  </div>
 </div>

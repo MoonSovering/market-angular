@@ -11,4 +11,6 @@ export const URL_RESOURCES = {
   getCategories: `${environment.apiUrl}/product-category`,
   postWaste: `${environment.apiUrl}/waste/create`,
   getAllWaste: `${environment.apiUrl}/waste`,
+  registerFarmer: `${environment.apiUrl}/farmer/create`,
+  registerCompany: `${environment.apiUrl}/company`,
 }

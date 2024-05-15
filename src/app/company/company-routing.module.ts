@@ -53,7 +53,10 @@ const routes: Routes = [
         outlet: 'list-company-cart-page'
       }
     ]
-
+  },
+  {
+    path: '**',
+    redirectTo: '/company'
   }
 ];
 

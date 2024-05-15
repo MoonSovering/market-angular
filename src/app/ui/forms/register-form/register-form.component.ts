@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputComponent } from '../../elements/input/input.component';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ICreateFarmer } from '../../../core/models/interfaces/create-farmer.interface';
 
 @Component({
   selector: 'app-register-form',
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './register-form.component.css'
 })
 export class RegisterFormComponent {
+  @Output() formData = new EventEmitter();
 
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -19,16 +21,14 @@ export class RegisterFormComponent {
     password: new FormControl(''),
     lastName: new FormControl(''),
     address: new FormControl(''),
-    contact: this.formBuilder.array([this.initContactField()]),
-    type: this.formBuilder.array([this.initTypeField()])
+    contact: new FormArray([]),
+    type: new FormArray([])
   });
   submitted = false;
-
-  constructor( private formBuilder: FormBuilder ){
-
+  constructor(private formBuilder: FormBuilder) {
   }
-
   ngOnInit(): void {
+    this.formData.emit("hola");
     this.form = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30), Validators.email]],
@@ -46,8 +46,10 @@ export class RegisterFormComponent {
     if (this.form.invalid) {
       return;
     }
+    this.formData.emit("hola");
     console.log(this.form.value);
   }
+
   private initContactField(): FormGroup {
     return this.formBuilder.group({
       contactType: ['', Validators.required],
@@ -60,33 +62,5 @@ export class RegisterFormComponent {
       typeFarm: ['', Validators.required],
       farm: ['', Validators.required],
     });
-  }
-
-  get contactControls() {
-    return (this.form.get('contact') as FormArray).controls;
-  }
-
-  addContact() {
-    const contactArray = this.form.get('contact') as FormArray;
-    contactArray.push(this.initContactField());
-  }
-
-  removeContact(index: number) {
-    const contactArray = this.form.get('contact') as FormArray;
-    contactArray.removeAt(index);
-  }
-
-  get typeControls() {
-    return (this.form.get('type') as FormArray).controls;
-  }
-
-  addType() {
-    const typeArray = this.form.get('type') as FormArray;
-    typeArray.push(this.initTypeField());
-  }
-
-  removeType(index: number) {
-    const typeArray = this.form.get('type') as FormArray;
-    typeArray.removeAt(index);
   }
 }

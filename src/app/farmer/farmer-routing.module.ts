@@ -53,6 +53,10 @@ const routes: Routes = [
         outlet: 'products-page'
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: '/farmer'
   }
 ];
 
