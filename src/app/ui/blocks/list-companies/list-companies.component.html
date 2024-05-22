@@ -3,7 +3,8 @@
 <main class="main">
   @if (companies == null) {
     <h1>No tenemos ninguna compañia disponible en este momento, por favor intentelo mas adelante.</h1>
-  }@else {
+  }
+  @if(companies != null) {
     <h1 class="main__h1">Nuestras compañias asociadas!</h1>
     <ul class="main__ul">
       @for (company of companies; track $index) {
@@ -24,5 +25,7 @@
         </div>
       }
     </ul>
+  }@else {
+   <h1>Cargando las compañias...</h1>
   }
 </main>

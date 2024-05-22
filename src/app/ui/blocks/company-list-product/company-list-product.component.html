@@ -4,7 +4,8 @@
 <main class="main">
 @if(products == null){
   <h1>Desafortunadamente no tenemos ningun producto disponible.</h1>
-  }@else {
+  }
+  @if(products != null) {
     <h1 class="main__title">Nuestros productos disponible.</h1>
     <ul class="main__ul">
       @for (item of products; track $index) {
@@ -34,6 +35,7 @@
     <a routerLink="{{redirect.link}}" class="main__anchor">
       <button class="main__button main__button--var">{{redirect.label}}</button>
     </a>
-  }
+  }@else {
+    <h1>Cargando tus productos...</h1>}
 </main>
 
